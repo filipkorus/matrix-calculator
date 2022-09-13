@@ -6,17 +6,17 @@ int main() {
 	Matrix A(3, 3, true), B(3, 3, true);
 	int operation;
 
-   enum actions {
-      ADDITION = 1,
-      SUBTRACTION,
-      MULTIPLICATION,
-      SCALAR_MULTIPLICATION,
-      EXPONENTIATION,
-      GET_VALUE_BY_INDEXES,
-      SWAP_ROWS,
-      SWAP_COLS,
-      EXIT
-   };
+	enum actions {
+		ADDITION = 1,
+		SUBTRACTION,
+		MULTIPLICATION,
+		SCALAR_MULTIPLICATION,
+		EXPONENTIATION,
+		GET_VALUE_BY_INDEXES,
+		SWAP_ROWS,
+		SWAP_COLS,
+		EXIT
+	};
 
 	std::cout << "A =\n" << A << "\nB =\n" << B << "\n";
 

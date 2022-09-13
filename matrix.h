@@ -11,12 +11,12 @@
 class Matrix {
 public:
 	Matrix(int, int, bool = false);
-	Matrix(const Matrix&); /* konstruktor kopiujacy */
+	Matrix(const Matrix&);
 	~Matrix();
-	int getW() const; /* getter do ilosci wierszy */
-	int getK() const; /* getter do ilosci kolumn */
-	double getFromPosition(int, int) const; /* getter do pozycji w macierzy (wspolrzedne jako args - 0-indexed) */
-	Matrix& setAtPosition(int, int, double); /* setter do pozycji w macierzy (wspolrzedne jako args - 0-indexed) */
+	int getW() const;
+	int getK() const;
+	double getFromPosition(int, int) const;
+	Matrix& setAtPosition(int, int, double);
 	bool isSameSize(const Matrix&) const;
 	bool operator==(const Matrix&) const;
 	Matrix& operator=(const Matrix&);

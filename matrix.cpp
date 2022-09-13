@@ -16,21 +16,21 @@ Matrix::Matrix(int row, int col, bool randomFill) {
 	}
 }
 
-Matrix::Matrix(const Matrix& copy) { // konstruktor kopiujacy - kopiuje macierz "copy" do macierzy "this"
-	this->w = copy.w; // "this" to nowy obiekt do ktorego kopiujemy wszystko z obiektu copy
+Matrix::Matrix(const Matrix& copy) {
+	this->w = copy.w;
 	this->k = copy.k;
-	this->m = new double* [this->w]; // deklarujemy nowa macierz
+	this->m = new double* [this->w];
 	for (int row = 0; row < this->w; ++row) {
-		this->m[row] = new double [this->k]; // dla kazdego wiersza w starej macierzy tworzymy wiersz w nowej macierzy
-		std::memcpy(this->m[row], copy.m[row], sizeof(double) * this->k); // i kopiujemy kazdy wiersz
+		this->m[row] = new double [this->k];
+		std::memcpy(this->m[row], copy.m[row], sizeof(double) * this->k);
 	}
 }
 
 Matrix::~Matrix() {
 	for (int row = 0; row < this->w; ++row) {
-		delete [] this->m[row]; // usuwa kazdy wiersz dynamicznej tablicy na wiersze macierzy
+		delete [] this->m[row];
 	}
-	delete [] this->m; // usuwa dynamiczna tablice na macierz
+	delete [] this->m;
 }
 
 int Matrix::getW() const {
@@ -77,18 +77,18 @@ bool Matrix::operator==(const Matrix &rhs) const {
 	return true;
 }
 
-Matrix& Matrix::operator=(const Matrix &rhs) { // podobne do kontruktora kopiujacego
+Matrix& Matrix::operator=(const Matrix &rhs) {
 	this->w = rhs.w;
 	this->k = rhs.k;
 
 	for (int row = 0; row < this->w; ++row) {
-		std::memcpy(this->m[row], rhs.m[row], sizeof(double) * this->k); // kopiowanie kazdego wiersza do nowego obiektu
+		std::memcpy(this->m[row], rhs.m[row], sizeof(double) * this->k);
 	}
 
 	return *this;
 }
 
-Matrix Matrix::operator+(const Matrix &rhs) const { // przeciazenie operatora
+Matrix Matrix::operator+(const Matrix &rhs) const {
 	if (!this->isSameSize(rhs)) {
 		throw std::invalid_argument("unable to add matrices with different sizes!");
 	}
@@ -144,7 +144,6 @@ Matrix Matrix::operator*(const Matrix &rhs) const {
 Matrix Matrix::operator*(const double &num) const {
 	Matrix result(this->w, this->k);
 
-   // przemnazam kazda liczbe w macierzy razy liczbe num
 	for (int row = 0; row < this->w; row++) {
 		for (int col = 0; col < this->k; col++) {
 			result.m[row][col] = this->m[row][col] * num;
